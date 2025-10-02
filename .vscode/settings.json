@@ -1,6 +1,8 @@
 {
-  "cSpell.words": [
-    "keystatic",
-    "markdoc"
-  ]
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.prettierPath": "./node_modules/prettier"
+  }
 }

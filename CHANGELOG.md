@@ -394,7 +394,7 @@
 
   export default defineConfig({
     output: 'server',
-  });
+  })
   ```
 
 - Updated dependencies [6a60ab3c]
