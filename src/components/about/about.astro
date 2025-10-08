@@ -1,3 +1,21 @@
-<section id="about">
-  <h2 class="text-2xl">About</h2>
-</section>
+---
+import Section from '../section.astro'
+import Title from '../title.astro'
+import Image from 'astro/components/Image.astro'
+---
+
+<Section id="about" class="p-4">
+  <Title
+    title="About Us"
+    number="01"
+    description="Faith, Family, & Beautiful Lawns"
+    text="We're the Jackson Family - proud Walnut Creek residents with three children who play in these same yards we care for. Our Christian faith guides how we treat every neighbor and the pride we take in our work. To us, maintaining beautiful spaces is about honoring the community God has blessed us to call home."
+  />
+  <Image
+    src="/src/images/about-1.png"
+    alt="About Us"
+    width="600"
+    height="400"
+    class="mt-6 rounded-lg shadow-lg"
+  />
+</Section>
