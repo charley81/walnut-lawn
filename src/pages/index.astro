@@ -1,7 +1,18 @@
 ---
+import About from '@/components/about/about.astro'
 import Layout from '../layouts/Layout.astro'
+import Hero from '@/components/hero/hero.astro'
+import Services from '@/components/services/services.astro'
+import Testimonials from '@/components/testimonials/testimonials.astro'
+import Faq from '@/components/faq/faq.astro'
+import { Contact } from 'lucide-react'
 ---
 
-<Layout title="Keystatic & Astro's Content Collections">
-  <h1 class="text-4xl">Walnut Lawn</h1>
+<Layout title="Walnut Lawn Care - Home">
+  <Hero />
+  <About />
+  <Services />
+  <Testimonials />
+  <Faq />
+  <Contact />
 </Layout>

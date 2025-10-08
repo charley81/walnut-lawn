@@ -1,20 +1,20 @@
 {
 	"geolocation": {
 		"data": {
-			"city": "Durham",
+			"city": "Atlanta",
 			"country": {
 				"code": "US",
 				"name": "United States"
 			},
 			"subdivision": {
-				"code": "NC",
-				"name": "North Carolina"
+				"code": "GA",
+				"name": "Georgia"
 			},
 			"timezone": "America/New_York",
-			"latitude": 35.961,
-			"longitude": -78.9291,
-			"postalCode": "27707"
+			"latitude": 33.7485,
+			"longitude": -84.3871,
+			"postalCode": "30301"
 		},
-		"timestamp": 1759330601759
+		"timestamp": 1759835290076
 	}
 }

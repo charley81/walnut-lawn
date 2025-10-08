@@ -1,0 +1,130 @@
+---
+import Logo from '../logo.astro'
+import { navLinks } from '../../data/navigation'
+import { Button } from '../ui/button'
+import {
+  LucideMenu,
+  LucideCircleX,
+  LucidePhone,
+  LucideMail,
+} from 'lucide-react'
+---
+
+<nav
+  class="sticky top-0 left-0 z-50 flex w-full justify-between bg-emerald-950/44 text-emerald-50 backdrop:blur-sm"
+>
+  <div class="mx-auto w-full max-w-4xl px-4 py-8 lg:max-w-[2000px]">
+    <div class="flex items-center justify-between">
+      <Logo />
+
+      <!-- desktop navlinks-->
+      <div class="hidden items-center gap-8 lg:flex">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-emerald-50 transition-colors hover:text-emerald-500 hover:underline"
+            >
+              {link.name}
+            </a>
+          ))
+        }
+
+        <Button variant="secondary">Free Estimate</Button>
+      </div>
+
+      <!-- mobile menu button -->
+      <button class="cursor-pointer lg:hidden" id="mobile-menu-button">
+        <LucideMenu className="lg:hidden" width="32" height="32" />
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile menu overlay -->
+  <div
+    id="mobile-overlay"
+    class="pointer-events-none fixed inset-0 z-50 bg-black/50 opacity-0 transition-opacity duration-300 lg:hidden"
+  >
+  </div>
+
+  <!-- mobile menu -->
+  <div
+    id="mobile-menu"
+    class="fixed top-0 right-0 z-50 h-full w-80 translate-x-full bg-emerald-950 shadow-xl transition-transform duration-300 ease-in-out lg:hidden"
+  >
+    <div class="flex h-full flex-col">
+      <!-- Mobile Menu Header -->
+      <div
+        class="flex items-center justify-between border-b border-white/10 p-6"
+      >
+        <Logo />
+        <button
+          id="mobile-close-button"
+          aria-label="Close menu"
+          class="cursor-pointer"
+        >
+          <LucideCircleX height="32" width="32" className="text-emerald-50" />
+        </button>
+      </div>
+
+      <!-- Mobile Menu Links -->
+      <div class="flex flex-col gap-1 p-6">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="mobile-nav-link rounded-lg px-4 py-3 font-bold text-emerald-50 transition-colors hover:bg-emerald-50/10"
+            >
+              {link.name}
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Mobile Menu Contact Info -->
+      <div class="mt-auto border-t border-white/10 p-6">
+        <div class="mb-4 flex items-center gap-3 text-white">
+          <LucidePhone />
+          <a href="tel:+1234567890" class="hover:text-emerald-300">
+            (123) 456-7890
+          </a>
+        </div>
+        <div class="mb-6 flex items-center gap-3 text-white">
+          <LucideMail />
+          <a href="mailto:info@walnutcreek.com" class="hover:text-emerald-300">
+            info@walnutcreek.com
+          </a>
+        </div>
+        <Button className="w-full">Free Estimate</Button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button')
+  const mobileCloseButton = document.getElementById('mobile-close-button')
+  const mobileMenu = document.getElementById('mobile-menu')
+  const mobileOverlay = document.getElementById('mobile-overlay')
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
+
+  function openMenu() {
+    mobileMenu?.classList.remove('translate-x-full')
+    mobileOverlay?.classList.remove('opacity-0', 'pointer-events-none')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeMenu() {
+    mobileMenu?.classList.add('translate-x-full')
+    mobileOverlay?.classList.add('opacity-0', 'pointer-events-none')
+    document.body.style.overflow = ''
+  }
+
+  mobileMenuButton?.addEventListener('click', openMenu)
+  mobileCloseButton?.addEventListener('click', closeMenu)
+  mobileOverlay?.addEventListener('click', closeMenu)
+
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener('click', closeMenu)
+  })
+</script>

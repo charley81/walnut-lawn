@@ -1,0 +1,48 @@
+---
+import { LucideLeafyGreen, LucideMenu } from 'lucide-react'
+import { Button } from './ui/button'
+
+const navLinks = [
+  { title: 'About', href: '#about' },
+  { title: 'Services', href: '#services' },
+  { title: 'Testimonials', href: '#testimonials' },
+  { title: 'FAQ', href: '#faq' },
+  { title: 'Contact', href: '#contact' },
+]
+---
+
+<nav>
+  <div>
+    <div>
+      <!-- Logo -->
+      <LucideLeafyGreen />
+      <span>Walnut Lawn</span>
+
+      <!-- Desktop Navigation -->
+      <div>
+        {navLinks.map((link) => <a href={link.href}>{link.title}</a>)}
+      </div>
+      <Button>Free Estimate</Button>
+
+      <!-- Mobile Menu Button -->
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div></div>
+
+<!-- Mobile Menu -->
+<div>
+  <div>
+    <!-- Mobile Menu Header -->
+    <div>
+      <div>
+        <LucideLeafyGreen />
+        <span>Walnut Lawn</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script></script>
