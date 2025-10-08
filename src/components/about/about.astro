@@ -1,9 +1,9 @@
 ---
 import Section from '../section.astro'
 import Title from '../title.astro'
-import Image from 'astro/components/Image.astro'
+import { Image } from 'astro:assets'
 
-const aboutImage = '/src/images/about-1.png'
+import aboutImage from '../../images/about-1.png'
 ---
 
 <Section
@@ -19,9 +19,9 @@ const aboutImage = '/src/images/about-1.png'
   />
   <Image
     src={aboutImage}
+    height={1024}
+    width={1024}
     alt="About Us"
-    width="1024"
-    height="1024"
     class="rounded-lg shadow-lg lg:w-1/2"
   />
 </Section>
