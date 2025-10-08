@@ -1,8 +1,15 @@
 ---
-const { title, number, text, description } = Astro.props
+export interface Props {
+  title: string
+  number: string
+  text: string
+  description: string
+  class?: string
+}
+const { title, number, text, description, class: className } = Astro.props
 ---
 
-<div>
+<div class={className}>
   <p class="font-light">{title.toUpperCase()}</p>
   <div class="flex items-center gap-x-4">
     <h3 class="text-5xl font-black text-emerald-500">{number}</h3>
