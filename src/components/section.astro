@@ -1,12 +1,7 @@
 ---
-export interface Props {
-  id?: string
-  class?: string
-}
-
 const { id, class: className } = Astro.props
 ---
 
-<section id={id} class={`my-[200px] max-w-[2000px] mx-auto ${className || ''}`}>
+<section id={id} class={`my-[200px] max-w-[1800px] mx-auto ${className || ''}`}>
   <slot />
 </section>

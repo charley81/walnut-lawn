@@ -1,20 +1,20 @@
 {
 	"geolocation": {
 		"data": {
-			"city": "Atlanta",
+			"city": "Charlotte",
 			"country": {
 				"code": "US",
 				"name": "United States"
 			},
 			"subdivision": {
-				"code": "GA",
-				"name": "Georgia"
+				"code": "NC",
+				"name": "North Carolina"
 			},
 			"timezone": "America/New_York",
-			"latitude": 33.7485,
-			"longitude": -84.3871,
-			"postalCode": "30301"
+			"latitude": 35.2843,
+			"longitude": -80.76,
+			"postalCode": "28213"
 		},
-		"timestamp": 1759835290076
+		"timestamp": 1760012709781
 	}
 }
