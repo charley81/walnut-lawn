@@ -1,3 +1,22 @@
-<section id="services">
-  <h2 class="text-2xl">Services</h2>
-</section>
+---
+import Section from '../section.astro'
+import Title from '../title.astro'
+import { Image } from 'astro:assets'
+import serviceImage from '../../images/services-1.png'
+import ServicesList from './services-list.astro'
+---
+
+<Section>
+  <Title
+    title="Our Services"
+    number="02"
+    description="Everything Your Lawn Needs to Thrive"
+    text="We provide complete lawn care designed for our  neighborhood. From routine mowing to fertilization and seasonal  clean-ups, our services are tailored to keep your yard looking  its best with ease and reliability"
+  />
+
+  <div class="my-8">
+    <Image src={serviceImage} alt="male weed eating grass" />
+  </div>
+
+  <ServicesList />
+</Section>
