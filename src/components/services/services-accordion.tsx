@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Accordion,
   AccordionContent,
@@ -26,7 +25,7 @@ export default function ServicesAccordion({
           <AccordionTrigger className="py-4 text-lg font-semibold hover:no-underline">
             {service.title}
           </AccordionTrigger>
-          <AccordionContent className="pb-4 leading-relaxed text-gray-600">
+          <AccordionContent className="data-[state=open]:animate-accordion-down data-[state=closes]:animate-accordion-up pb-4 leading-relaxed text-gray-600">
             {service.description}
           </AccordionContent>
         </AccordionItem>
