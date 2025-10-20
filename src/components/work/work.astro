@@ -4,7 +4,7 @@ import Title from '../title.astro'
 import { GallerySlider } from '../../components/work/gallery-slider'
 ---
 
-<Section class="gap grid gap-y-8">
+<Section class="gap grid gap-y-8" id="work">
   <div class="flex">
     <div class="lg:w-1/2"></div>
     <Title
@@ -16,5 +16,5 @@ import { GallerySlider } from '../../components/work/gallery-slider'
     />
   </div>
 
-  <GallerySlider client:load />
+  <GallerySlider client:visible />
 </Section>
