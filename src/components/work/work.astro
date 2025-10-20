@@ -1,0 +1,20 @@
+---
+import Section from '../section.astro'
+import Title from '../title.astro'
+import { GallerySlider } from '../../components/work/gallery-slider'
+---
+
+<Section class="gap grid gap-y-8">
+  <div class="flex">
+    <div class="lg:w-1/2"></div>
+    <Title
+      class="lg:w-1/2"
+      title="Our Work"
+      number="03"
+      description="Everything Your Lawn Needs to Thrive"
+      text="A picture is worth a thousand words. Browse recent projects from our neighborhood to see the results for yourself"
+    />
+  </div>
+
+  <GallerySlider client:load />
+</Section>
