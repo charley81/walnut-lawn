@@ -3,20 +3,33 @@ import Section from '../section.astro'
 import Title from '../title.astro'
 import { Image } from 'astro:assets'
 import serviceImage from '../../images/services-1.png'
-import ServicesList from './services-list.astro'
+import { services } from '@/data/services'
+import ServicesAccordion from './services-accordion'
 ---
 
-<Section>
-  <Title
-    title="Our Services"
-    number="02"
-    description="Everything Your Lawn Needs to Thrive"
-    text="We provide complete lawn care designed for our  neighborhood. From routine mowing to fertilization and seasonal  clean-ups, our services are tailored to keep your yard looking  its best with ease and reliability"
-  />
-
-  <div class="my-8">
-    <Image src={serviceImage} alt="male weed eating grass" />
+<Section class="grid">
+  <div class="flex">
+    <div class="lg:w-1/2"></div>
+    <Title
+      class="lg:w-1/2"
+      title="Our Services"
+      number="02"
+      description="Everything Your Lawn Needs to Thrive"
+      text="We provide complete lawn care designed for our  neighborhood. From routine mowing to fertilization and seasonal  clean-ups, our services are tailored to keep your yard looking  its best with ease and reliability"
+    />
   </div>
 
-  <ServicesList />
+  <div
+    class="flex flex-col gap-y-8 lg:flex-row-reverse lg:items-center lg:gap-x-8"
+  >
+    <Image
+      src={serviceImage}
+      alt="male weed eating grass"
+      class="mt-8 rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2"
+    />
+
+    <div class="w-full lg:w-1/2">
+      <ServicesAccordion client:load services={services} />
+    </div>
+  </div>
 </Section>

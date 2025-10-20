@@ -1,20 +1,37 @@
 export const services = [
   {
     id: '1',
-    title: 'Keep Your Lawn Neat & Tidy',
+    title: 'Weekly Lawn Maintenance',
     description:
-      'Our regular maintenance keeps your Walnut Creek lawn looking  crisp and well-cared for every week. The essentials that make your yard  the envy of the neighborhood.',
+      'Regular mowing, edging, and trimming to keep your Walnut Creek property looking pristine every week. The essential care that makes your yard the envy of the neighborhood.',
+    icon: 'LucideConstruction',
   },
   {
     id: '2',
-    title: 'Helping Your Lawn Thrive',
+    title: 'Lawn Health & Fertilization',
     description:
-      'Beyond basic maintenance, these services create a healthier, greener, more vibrant lawn that stands out in Walnut Creek.',
+      'Professional fertilization, weed control, and aeration services to create a healthier, greener, more vibrant lawn that thrives in our local climate.',
+    icon: 'LucideHeartPulse',
   },
   {
     id: '3',
-    title: 'Year-Round Beauty',
+    title: 'Seasonal Cleanup & Care',
     description:
-      'Our regular maintenance keeps your Walnut Creek lawn looking  crisp and well-cared for every week. The essentials that make your yard  the envy of the neighborhood.',
+      "Comprehensive seasonal services including leaf removal, winter preparation, and spring revitalization to maintain your yard's beauty year-round.",
+    icon: 'LucideSunSnow',
   },
-]
+  {
+    id: '4',
+    title: 'Landscape Enhancement',
+    description:
+      "Transform your outdoor space with our planting, pruning, and landscaping services. We help create the beautiful, functional outdoor living area you've always wanted.",
+    icon: 'LucideImagePlus',
+  },
+  {
+    id: '5',
+    title: 'Irrigation & Water Management',
+    description:
+      'Smart irrigation system installation, maintenance, and seasonal adjustments to ensure your lawn gets the perfect amount of water while conserving resources.',
+    icon: 'LucideDroplet',
+  },
+] as const
