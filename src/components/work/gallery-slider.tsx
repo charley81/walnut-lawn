@@ -6,7 +6,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import Autoplay from 'embla-carousel-autoplay'
 import type { ImageMetadata } from 'astro'
 const modules = import.meta.glob<{ default: ImageMetadata }>(
   '../../images/work/*',
@@ -19,14 +18,7 @@ const images = Object.values(modules).map((module) => module.default.src)
 
 export function GallerySlider() {
   return (
-    <Carousel
-      className="mx-auto w-full max-w-[2000px]"
-      plugins={[
-        Autoplay({
-          delay: 2000,
-        }),
-      ]}
-    >
+    <Carousel className="mx-auto w-full max-w-[2000px]">
       <CarouselContent className="-ml-4">
         {images.map((src, index) => (
           <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">

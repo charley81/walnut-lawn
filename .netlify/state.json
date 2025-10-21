@@ -1,7 +1,7 @@
 {
 	"geolocation": {
 		"data": {
-			"city": "Pineville",
+			"city": "Gastonia",
 			"country": {
 				"code": "US",
 				"name": "United States"
@@ -11,10 +11,10 @@
 				"name": "North Carolina"
 			},
 			"timezone": "America/New_York",
-			"latitude": 35.0832,
-			"longitude": -80.8923,
-			"postalCode": "28134"
+			"latitude": 35.2497,
+			"longitude": -81.1369,
+			"postalCode": "28054"
 		},
-		"timestamp": 1760959660397
+		"timestamp": 1761048930536
 	}
 }
