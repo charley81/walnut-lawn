@@ -4,8 +4,7 @@ import Title from '../title.astro'
 import { Image } from 'astro:assets'
 import serviceImage from '../../images/services-1.png'
 import { data } from '@/data/why-us'
-import WhyAccordion from './why-accordion.astro'
-import { services } from '@/data/services'
+import WhyAccordion from './why-accordion'
 ---
 
 <Section class="grid" id="services">
@@ -18,7 +17,7 @@ import { services } from '@/data/services'
       text="You have choices for lawn care, but only one is built  right here in Walnut Creek. We offer the perfect blend of professional  results and personal care. As a local family, we're invested in our  community's beauty, and we bring faith-based integrity to every job.  Your lawn isn't just an address to us—it's part of our neighborhood."
     />
 
-    <div class="flex flex-col gap-y-8 lg:items-center lg:gap-x-8">
+    <div class="flex flex-col gap-y-8 lg:flex-row lg:items-center lg:gap-x-8">
       <Image
         src={serviceImage}
         alt="male weed eating grass"
