@@ -1,7 +1,7 @@
 {
 	"geolocation": {
 		"data": {
-			"city": "Gastonia",
+			"city": "Monroe",
 			"country": {
 				"code": "US",
 				"name": "United States"
@@ -11,10 +11,10 @@
 				"name": "North Carolina"
 			},
 			"timezone": "America/New_York",
-			"latitude": 35.2497,
-			"longitude": -81.1369,
-			"postalCode": "28054"
+			"latitude": 35.0221,
+			"longitude": -80.5318,
+			"postalCode": "28110"
 		},
-		"timestamp": 1761048930536
+		"timestamp": 1761582559005
 	}
 }
