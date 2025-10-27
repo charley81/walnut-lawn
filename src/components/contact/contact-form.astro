@@ -1,0 +1,191 @@
+<form
+  method="POST"
+  action="?/contact"
+  class="mx-auto max-w-2xl space-y-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm"
+  name="contact"
+  netlify
+>
+  <h2 class="mb-8 text-center text-3xl font-bold text-gray-900">Contact Us</h2>
+
+  <!-- Name Section -->
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div class="space-y-2">
+      <label for="firstName" class="block text-sm font-medium text-gray-700">
+        First Name
+      </label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        required
+        placeholder="First name..."
+        class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+    </div>
+
+    <div class="space-y-2">
+      <label for="lastName" class="block text-sm font-medium text-gray-700">
+        Last Name
+      </label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        required
+        placeholder="Last name..."
+        class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+    </div>
+  </div>
+
+  <!-- Contact Information -->
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div class="space-y-2">
+      <label for="email" class="block text-sm font-medium text-gray-700">
+        Email
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="Email..."
+        class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+    </div>
+
+    <div class="space-y-2">
+      <label for="phone" class="block text-sm font-medium text-gray-700">
+        Phone
+      </label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        required
+        placeholder="Phone..."
+        class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+    </div>
+  </div>
+
+  <!-- Address Section -->
+  <div class="space-y-4">
+    <h3 class="text-lg font-semibold text-gray-900">Address</h3>
+
+    <div class="space-y-2">
+      <label for="street" class="block text-sm font-medium text-gray-700">
+        Street
+      </label>
+      <input
+        type="text"
+        id="street"
+        name="street"
+        required
+        placeholder="Street..."
+        class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div class="space-y-2 md:col-span-2">
+        <label for="city" class="block text-sm font-medium text-gray-700">
+          City
+        </label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          required
+          placeholder="City..."
+          class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <label for="state" class="block text-sm font-medium text-gray-700">
+          State
+        </label>
+        <select
+          id="state"
+          name="state"
+          required
+          class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 shadow-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+        >
+          <option value="">Select State</option>
+          <option value="SC">South Carolina</option>
+          <option value="NC">North Carolina</option>
+        </select>
+      </div>
+
+      <div class="space-y-2">
+        <label for="zip" class="block text-sm font-medium text-gray-700">
+          ZIP
+        </label>
+        <input
+          type="text"
+          id="zip"
+          name="zip"
+          required
+          minlength="5"
+          placeholder="ZIP"
+          class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Referral Source -->
+  <div class="space-y-2">
+    <label for="referralSource" class="block text-sm font-medium text-gray-700">
+      How did you hear about us?
+    </label>
+    <select
+      id="referralSource"
+      name="referralSource"
+      required
+      class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 shadow-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+    >
+      <option value="">Select an option</option>
+      <option value="friend">Referred by friend/family</option>
+      <option value="google">Google Search</option>
+      <option value="social">Social Media</option>
+      <option value="driveby">Drive-by / Saw our work</option>
+      <option value="sign">Yard Sign</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    class="w-full rounded-md bg-emerald-950 px-4 py-3 font-medium text-emerald-50 shadow-sm transition-colors duration-200 hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
+  >
+    Send Request
+  </button>
+</form>
+
+<style>
+  /* Ensure consistent styling across browsers */
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+</style>
+
+<script>
+  import { actions } from 'astro:actions'
+  import { navigate } from 'astro:transitions/client'
+
+  const form = document.querySelector('form')
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    const formData = new FormData(form)
+    const { error } = await actions.contact(formData)
+  })
+</script>
