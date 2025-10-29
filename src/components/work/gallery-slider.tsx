@@ -18,11 +18,11 @@ const images = Object.values(modules).map((module) => module.default.src)
 
 export function GallerySlider() {
   return (
-    <Carousel className="mx-auto w-full max-w-[2000px]">
+    <Carousel className="w-full">
       <CarouselContent className="-ml-4">
         {images.map((src, index) => (
           <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
+            <div className="">
               <Card className="overflow-hidden">
                 <CardContent className="aspect-square items-center justify-center">
                   <img

@@ -1,20 +1,20 @@
 {
 	"geolocation": {
 		"data": {
-			"city": "Monroe",
+			"city": "Ladson",
 			"country": {
 				"code": "US",
 				"name": "United States"
 			},
 			"subdivision": {
-				"code": "NC",
-				"name": "North Carolina"
+				"code": "SC",
+				"name": "South Carolina"
 			},
 			"timezone": "America/New_York",
-			"latitude": 35.0221,
-			"longitude": -80.5318,
-			"postalCode": "28110"
+			"latitude": 32.9918,
+			"longitude": -80.1187,
+			"postalCode": "29456"
 		},
-		"timestamp": 1761582559005
+		"timestamp": 1761669808961
 	}
 }
