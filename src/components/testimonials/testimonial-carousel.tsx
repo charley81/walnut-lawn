@@ -1,3 +1,8 @@
+'use client'
+
+import * as React from 'react'
+import Autoplay from 'embla-carousel-autoplay'
+
 import { Card, CardContent } from '@/components/ui/card'
 import {
   Carousel,
@@ -6,21 +11,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import type { ImageMetadata } from 'astro'
-import Autoplay from 'embla-carousel-autoplay'
-import React from 'react'
-const modules = import.meta.glob<{ default: ImageMetadata }>(
-  '../../images/work/*',
-  {
-    eager: true,
-  },
-)
+import { testimonials } from '@/data/testimonials'
 
-const images = Object.values(modules).map((module) => module.default.src)
-
-export function GallerySlider() {
+export function TestimonialCarousel() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false }),
+    Autoplay({ delay: 2000, stopOnInteraction: true }),
   )
 
   return (
@@ -30,25 +25,24 @@ export function GallerySlider() {
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
-      <CarouselContent className="-ml-4">
-        {images.map((src, index) => (
+      <CarouselContent>
+        {testimonials.map((src, index) => (
           <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
             <div>
               <Card className="overflow-hidden">
                 <CardContent className="aspect-square items-center justify-center">
-                  <img
-                    src={src}
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
+                  <img src={src.image} alt="" className="h-24 w-24" />
+                  <p>{src.tagline}</p>
+                  <p>{src.quote}</p>
+                  <p>{src.author}</p>
                 </CardContent>
               </Card>
             </div>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-4" />
-      <CarouselNext className="right-4" />
+      <CarouselPrevious />
+      <CarouselNext />
     </Carousel>
   )
 }

@@ -1,7 +1,18 @@
 ---
+import Section from '../section.astro'
+import Title from '../title.astro'
 import ContactForm from './contact-form.astro'
 ---
 
-<section id="contact">
+<Section id="contact">
+  <div class="flex justify-center">
+    <Title
+      class="mb-16 lg:w-1/2"
+      title="Contact Us"
+      number="06"
+      description="Get Your Free Quote Today"
+      text="Ready for a beautiful, hassle-free lawn? Contact us for a  free, no-obligation quote designed specifically for Walnut Creek. We're your neighbors, and we're here to help"
+    />
+  </div>
   <ContactForm />
-</section>
+</Section>
