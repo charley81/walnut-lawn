@@ -28,13 +28,17 @@ export function TestimonialCarousel() {
       <CarouselContent>
         {testimonials.map((src, index) => (
           <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-            <div>
-              <Card className="overflow-hidden">
-                <CardContent className="aspect-square items-center justify-center">
-                  <img src={src.image} alt="" className="h-24 w-24" />
-                  <p>{src.tagline}</p>
-                  <p>{src.quote}</p>
-                  <p>{src.author}</p>
+            <div className="h-full">
+              <Card className="overflow-hidden p-4">
+                <CardContent className="flex flex-col gap-y-4">
+                  <img
+                    src={src.image}
+                    alt=""
+                    className="h-16 w-16 rounded-full border-2 border-emerald-500"
+                  />
+                  <p className="font-light">{src.tagline}</p>
+                  <p className="tracking-wider text-slate-500">{src.quote}</p>
+                  <p className="mt-auto font-medium">{src.author}</p>
                 </CardContent>
               </Card>
             </div>
