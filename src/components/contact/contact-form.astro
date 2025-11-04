@@ -1,10 +1,12 @@
 <form
   method="POST"
-  action="?/contact"
   class="-gray-200 mx-auto max-w-4xl space-y-6 rounded-lg bg-white p-6"
   name="contact"
   data-netlify="true"
 >
+  <!-- Hidden form-name input for Netlify -->
+  <input type="hidden" name="form-name" value="contact" />
+
   <!-- Name Section -->
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
     <div class="space-y-2">
