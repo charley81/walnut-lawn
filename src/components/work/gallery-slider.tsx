@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 import type { ImageMetadata } from 'astro'
+import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import React from 'react'
 const modules = import.meta.glob<{ default: ImageMetadata }>(
@@ -19,9 +20,7 @@ const modules = import.meta.glob<{ default: ImageMetadata }>(
 const images = Object.values(modules).map((module) => module.default.src)
 
 export function GallerySlider() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false }),
-  )
+  const plugin = React.useRef(Autoplay({ delay: 3000 }))
 
   return (
     <Carousel
