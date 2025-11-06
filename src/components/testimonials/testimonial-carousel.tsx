@@ -74,7 +74,7 @@ export function TestimonialCarousel() {
   )
 
   return (
-    <section className="px-4 py-16 md:py-24">
+    <section className="w-full overflow-hidden px-4 py-16 md:py-24">
       <div className="container mx-auto">
         <Carousel
           opts={{
@@ -83,11 +83,11 @@ export function TestimonialCarousel() {
           }}
           className="w-full"
         >
-          <CarouselContent className="">
+          <CarouselContent>
             {testimonials.map((testimonial) => (
               <CarouselItem
                 key={testimonial.id}
-                className="md:basis-1/2 lg:basis-1/3"
+                className="w-full md:basis-1/2 lg:basis-1/3"
               >
                 <Card className="h-full w-full border-neutral-200 shadow-sm transition-shadow hover:shadow-md">
                   <CardContent className="flex h-full flex-col gap-y-4 p-6">
@@ -102,7 +102,7 @@ export function TestimonialCarousel() {
                       {testimonial.tagline}
                     </p>
 
-                    <p className="leading-relaxed text-pretty break-words text-slate-500">
+                    <p className="break-words text-slate-500">
                       {testimonial.quote}
                     </p>
 
