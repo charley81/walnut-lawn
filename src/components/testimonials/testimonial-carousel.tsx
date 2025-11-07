@@ -69,19 +69,16 @@ const testimonials: Testimonial[] = [
 ]
 
 export function TestimonialCarousel() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false }),
-  )
+  const plugin = React.useRef(Autoplay({ delay: 3000 }))
 
   return (
     <section className="w-full overflow-hidden px-4 py-16 md:py-24">
       <div className="container mx-auto">
         <Carousel
-          opts={{
-            align: 'start',
-            loop: true,
-          }}
+          plugins={[plugin.current]}
           className="w-full"
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
         >
           <CarouselContent>
             {testimonials.map((testimonial) => (

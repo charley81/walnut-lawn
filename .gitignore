@@ -23,3 +23,5 @@ pnpm-debug.log*
 .netlify
 
 settings.json
+
+state.json
