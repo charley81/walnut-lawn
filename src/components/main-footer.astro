@@ -1,0 +1,47 @@
+---
+import { Mail, Phone, Facebook, Linkedin } from 'lucide-react'
+import { navLinks } from '@/data/navigation'
+import BottomFooter from './bottom-footer.astro'
+import Section from './section.astro'
+---
+
+<Section>
+  <footer>
+    <!-- Main Footer Content - 3 columns on desktop -->
+    <h3 class="font-bold">CONTACT US</h3>
+
+    <div class="flex flex-col gap-y-16 lg:flex-row lg:justify-between">
+      <!-- contact section -->
+      <div class="mt-8 flex flex-col gap-y-4">
+        <p class="text-slate-500">
+          <Mail
+            className="mr-1 inline-block text-emerald-950"
+          />gradeyjackson@walnutlawn.com
+        </p>
+        <p class="text-slate-500">
+          <Phone className="mr-1 inline-block text-emerald-950" />803-547-2111
+        </p>
+
+        <div class="flex cursor-pointer gap-x-2 text-emerald-500">
+          <Linkedin className="hover:text-emerald-600" />
+          <Facebook className="hover:text-emerald-600" />
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="grid grid-cols-2 gap-y-8 lg:grid-cols-3 lg:gap-x-8">
+        {
+          navLinks.map((link) => (
+            <a
+              href="/services"
+              class="rounded text-emerald-950 transition-colors duration-200 hover:text-emerald-400 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-emerald-950 focus:outline-none"
+            >
+              <span class="text-emerald-500">|</span> {link.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </footer>
+</Section>
+<BottomFooter />
