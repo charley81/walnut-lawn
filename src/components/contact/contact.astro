@@ -1,7 +1,7 @@
 ---
 import Section from '../section.astro'
 import Title from '../title.astro'
-import ContactForm from './contact-form.astro'
+import ContactForm from './contact-form.tsx'
 ---
 
 <Section id="contact">
@@ -14,5 +14,5 @@ import ContactForm from './contact-form.astro'
       text="Ready for a beautiful, hassle-free lawn? Contact us for a  free, no-obligation quote designed specifically for Walnut Creek. We're your neighbors, and we're here to help"
     />
   </div>
-  <ContactForm />
+  <ContactForm client:load />
 </Section>

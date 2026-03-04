@@ -1,6 +1,10 @@
+function clean(phoneNumber: string): string {
+  return phoneNumber.replace(/\D/g, '')
+}
+
 export function formatPhoneNumber(phoneNumber: string) {
   // remove all non-digit characters and limit to 10
-  const cleaned = phoneNumber.replace(/\D/g, '').slice(0, 10)
+  const cleaned = clean(phoneNumber).slice(0, 10)
 
   if (cleaned.length === 0) return ''
   if (cleaned.length <= 3) return cleaned
@@ -9,10 +13,9 @@ export function formatPhoneNumber(phoneNumber: string) {
 }
 
 export function isValidPhoneNumber(phoneNumber: string) {
-  const cleaned = phoneNumber.replace(/\D/g, '')
-  return cleaned.length === 10
+  return clean(phoneNumber).length === 10
 }
 
 export function sanitizePhoneInput(input: string) {
-  return input.replace(/\D/g, '').substring(0, 10)
+  return clean(input).substring(0, 10)
 }
