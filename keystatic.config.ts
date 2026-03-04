@@ -5,23 +5,17 @@ export default config({
     kind: 'local',
   },
   collections: {
-    posts: collection({
-      label: 'Posts',
-      slugField: 'title',
-      path: 'src/content/posts/*',
+    hero: collection({
+      label: 'Hero Content',
+      slugField: 'headline',
+      path: 'src/content/hero/*',
       format: { contentField: 'content' },
       schema: {
-        title: fields.slug({ name: { label: 'Title' } }),
-        content: fields.markdoc({
-          label: 'Content',
-          options: {
-            image: {
-              directory: 'src/assets/images/posts',
-              publicPath: '../../assets/images/posts/',
-            },
-          },
-        }),
+        headline: fields.slug({ name: { label: 'Hero Headline' } }),
+        ctaText: fields.text({ label: 'CTA Text' }),
+        ctaButtonText: fields.text({ label: 'CTA Button Text' }),
       },
     }),
   },
+  singletons: {},
 })

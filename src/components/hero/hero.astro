@@ -5,6 +5,12 @@ import { Image } from 'astro:assets'
 import HeroImage from '../../images/hero-1.png'
 import { Button } from '../ui/button'
 import MainNavigation from './main-navigation.astro'
+
+import { getCollection } from 'astro:content'
+
+const heroContent = await getCollection('hero')
+
+console.log(heroContent)
 ---
 
 <TopHeader />
