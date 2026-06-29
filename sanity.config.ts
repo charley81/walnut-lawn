@@ -17,6 +17,7 @@ export default defineConfig({
   title: 'Walnut Lawn CMS',
   projectId: 'rpjmkqdf',
   dataset: 'production',
+  basePath: '/studio',
   plugins: [structureTool()],
   schema: {
     types: [
