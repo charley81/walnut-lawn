@@ -1,5 +1,6 @@
 # build output
 dist/
+public/studio/
 
 # generated types
 .astro/
@@ -24,4 +25,4 @@ pnpm-debug.log*
 
 settings.json
 
-state.json
+state.json.sanity/

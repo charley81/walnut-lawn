@@ -1,7 +1,7 @@
 ---
 // Embedded Sanity Studio at https://walnutlawn.net/admin
 // Dev: loads Studio from localhost:3333 (run `npx sanity dev --port 3333`)
-// Production: loads from Sanity-hosted Studio (enable in Sanity dashboard at rpjmkqdf.sanity.studio)
+// Production: loads built Studio from /studio/ (built via `npx sanity build public/studio -y`)
 ---
 <!doctype html>
 <html lang="en">
@@ -54,7 +54,7 @@
       const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
       const studioUrl = isLocal
         ? 'http://localhost:3333'
-        : 'https://rpjmkqdf.sanity.studio'
+        : '/studio'
 
       const iframe = document.createElement('iframe')
       iframe.src = studioUrl
