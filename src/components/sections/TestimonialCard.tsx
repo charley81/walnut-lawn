@@ -34,7 +34,7 @@ const localAvatars: TestimonialMap = {
 }
 
 export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
-  const sanitUrl = testimonial.avatar?.asset ? urlFor(testimonial.avatar).width(80).height(80).url() : null
+  const sanitUrl = testimonial.avatar?.asset ? urlFor(testimonial.avatar).width(80).height(80).format('webp').url() : null
   const fallbackUrl = localAvatars[testimonial.name] || null
   const avatarUrl = sanitUrl || fallbackUrl
 

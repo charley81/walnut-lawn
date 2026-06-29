@@ -54,8 +54,9 @@ const socialIconMap: Record<string, any> = {
         <div class="flex cursor-pointer gap-x-2 text-emerald-500">
           {socialLinks.map((link) => {
             const Icon = socialIconMap[link.platform?.toLowerCase()]
+            const label = link.platform ? `Visit us on ${link.platform}` : 'Social media link'
             return Icon ? (
-              <a href={link.url} target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600">
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600" aria-label={label}>
                 <Icon />
               </a>
             ) : null
