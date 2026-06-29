@@ -18,6 +18,9 @@ export default defineConfig({
   projectId: 'rpjmkqdf',
   dataset: 'production',
   basePath: '/studio',
+  vite: {
+    base: '/studio/',
+  },
   plugins: [structureTool()],
   schema: {
     types: [

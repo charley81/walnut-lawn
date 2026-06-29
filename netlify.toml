@@ -1,5 +1,5 @@
 [build]
-  command = "npx sanity build public/studio -y && pnpm run build"
+  command = "npx sanity build public/studio -y && node scripts/fix-studio-paths.js && pnpm run build"
   publish = "dist"
 
 [build.environment]
