@@ -25,4 +25,6 @@ pnpm-debug.log*
 
 settings.json
 
-state.json.sanity/
+state.json
+
+.sanity/
