@@ -28,7 +28,7 @@ const {
   servicesList = []
 } = data
 
-const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1200).url() : null
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1200).format('webp').url() : null
 ---
 
 <SectionWrapper class="grid" id="services">

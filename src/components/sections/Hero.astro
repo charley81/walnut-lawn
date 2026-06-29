@@ -46,7 +46,7 @@ const {
   navLinks = []
 } = settings
 
-const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1920).url() : null
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1920).format('webp').url() : null
 ---
 
 <div class="relative h-screen w-full">
@@ -65,7 +65,7 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1920).url() : nu
               {link.name}
             </a>
           ))}
-          <Button variant="secondary">
+          <Button variant="secondary" asChild>
             <a href="#contact">{ctaText}</a>
           </Button>
         </div>
@@ -96,7 +96,7 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1920).url() : nu
 
       <div class="flex w-full flex-col gap-y-4 rounded-[8px] bg-emerald-950/64 p-4 lg:w-4/12 xl:w-3/12">
         <p>{subtext}</p>
-        <Button>
+        <Button asChild>
           <a href="#contact">{ctaText}</a>
         </Button>
       </div>

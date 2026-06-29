@@ -29,7 +29,7 @@ const {
   features = []
 } = data
 
-const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1024).url() : null
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1024).format('webp').url() : null
 ---
 
 <SectionWrapper class="grid" id="faq">
@@ -43,7 +43,7 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1024).url() : nu
         text={introText}
       />
 
-      <Button className="mt-8 w-1/2 bg-emerald-950 text-emerald-50">
+      <Button className="mt-8 w-1/2 bg-emerald-950 text-emerald-50" asChild>
         <a href="#contact">Get Free Estimate</a>
       </Button>
     </div>
