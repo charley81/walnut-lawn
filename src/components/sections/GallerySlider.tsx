@@ -36,7 +36,7 @@ export function GallerySlider({ images }: GallerySliderProps) {
             <div>
               <Card className="overflow-hidden">
                 <CardContent className="aspect-square items-center justify-center">
-                  <img src={src} alt="" className="h-full w-full object-cover" />
+                  <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" />
                 </CardContent>
               </Card>
             </div>

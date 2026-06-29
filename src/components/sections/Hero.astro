@@ -79,7 +79,7 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
 
   <!-- hero image -->
   {imageUrl ? (
-    <img src={imageUrl} alt="Hero Image" class="absolute inset-0 h-full w-full object-cover" />
+    <img src={imageUrl} alt="Hero Image" class="absolute inset-0 h-full w-full object-cover" fetchpriority="high" />
   ) : (
     <Image src={heroFallback} alt="Hero Image" class="absolute inset-0 h-full w-full object-cover" />
   )}

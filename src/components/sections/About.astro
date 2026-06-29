@@ -37,7 +37,7 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
   />
 
   {imageUrl ? (
-    <img src={imageUrl} alt="About Us" class="rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
+    <img src={imageUrl} alt="About Us" class="rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" loading="lazy" width="1024" height="1024" />
   ) : (
     <Image src={aboutFallback} alt="About Us" class="rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
   )}

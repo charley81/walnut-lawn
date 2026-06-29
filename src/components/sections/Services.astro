@@ -44,7 +44,7 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
 
   <div class="flex flex-col gap-y-8 lg:flex-row-reverse lg:items-center lg:gap-x-8">
     {imageUrl ? (
-      <img src={imageUrl} alt="Services" class="mt-8 rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
+      <img src={imageUrl} alt="Services" class="mt-8 rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" loading="lazy" width="1996" height="1960" />
     ) : (
       <Image src={servicesFallback} alt="Services" class="mt-8 rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
     )}

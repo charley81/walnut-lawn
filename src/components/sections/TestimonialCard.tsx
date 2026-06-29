@@ -46,7 +46,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
             <img
               src={avatarUrl}
               alt={testimonial.name}
-              className="h-full w-full rounded-full object-cover ring-2 ring-emerald-600"
+              className="h-full w-full rounded-full object-cover ring-2 ring-emerald-600" loading="lazy"
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center rounded-full bg-emerald-100 text-lg font-bold text-emerald-600 ring-2 ring-emerald-600">
