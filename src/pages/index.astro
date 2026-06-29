@@ -11,8 +11,14 @@ import Contact from '../components/sections/Contact.astro'
 import { client } from '../lib/sanity'
 import { siteSettingsQuery, pageQuery } from '../lib/queries'
 
-const siteSettings = await client.fetch(siteSettingsQuery)
-const pageData = await client.fetch(pageQuery)
+const siteSettings = await client.fetch(siteSettingsQuery).catch((e) => {
+  console.error('Failed to fetch site settings from Sanity:', e)
+  return null
+})
+const pageData = await client.fetch(pageQuery).catch((e) => {
+  console.error('Failed to fetch page data from Sanity:', e)
+  return null
+})
 const pageBuilder = pageData?.pageBuilder || []
 ---
 
@@ -20,21 +26,22 @@ const pageBuilder = pageData?.pageBuilder || []
   {
     pageBuilder.length > 0 ? (
       pageBuilder.map((section: any, index: number) => {
+        const num = String(index + 1).padStart(2, '0')
         switch (section._type) {
           case 'heroSection':
             return <Hero data={section} settings={siteSettings || {}} />
           case 'aboutSection':
-            return <About data={section} />
+            return <About data={{ ...section, sectionNumber: num }} />
           case 'servicesSection':
-            return <Services data={section} />
+            return <Services data={{ ...section, sectionNumber: num }} />
           case 'workSection':
-            return <Work data={section} />
+            return <Work data={{ ...section, sectionNumber: num }} />
           case 'whyUsSection':
-            return <WhyUs data={section} />
+            return <WhyUs data={{ ...section, sectionNumber: num }} />
           case 'testimonialsSection':
-            return <Testimonials data={section} />
+            return <Testimonials data={{ ...section, sectionNumber: num }} />
           case 'contactSection':
-            return <Contact data={section} />
+            return <Contact data={{ ...section, sectionNumber: num }} />
           default:
             return null
         }

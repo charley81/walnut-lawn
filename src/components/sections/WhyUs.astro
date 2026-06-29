@@ -29,7 +29,7 @@ const {
   features = []
 } = data
 
-const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1024).url() : null
 ---
 
 <SectionWrapper class="grid" id="faq">

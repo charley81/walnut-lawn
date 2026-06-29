@@ -26,7 +26,7 @@ const {
 // Build image URLs from Sanity image references
 const imageUrls = gallery
   .filter((img) => img?.asset)
-  .map((img) => urlFor(img).url())
+  .map((img) => urlFor(img).width(800).url())
 ---
 
 <SectionWrapper class="gap grid gap-y-8" id="work">

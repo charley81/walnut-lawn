@@ -46,7 +46,7 @@ const {
   navLinks = []
 } = settings
 
-const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1920).url() : null
 ---
 
 <div class="relative h-screen w-full">
