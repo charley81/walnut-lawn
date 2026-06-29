@@ -4,3 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Proxy Sanity images through our domain to avoid third-party cookies
+[[redirects]]
+  from = "/sanity-images/*"
+  to = "https://cdn.sanity.io/images/:splat"
+  status = 200

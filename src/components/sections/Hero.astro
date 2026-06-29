@@ -65,8 +65,8 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1920).format('we
               {link.name}
             </a>
           ))}
-          <Button variant="secondary" asChild>
-            <a href="#contact">{ctaText}</a>
+          <Button variant="secondary">
+            <a href="#contact" class="block h-full w-full">{ctaText}</a>
           </Button>
         </div>
 
@@ -96,8 +96,8 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1920).format('we
 
       <div class="flex w-full flex-col gap-y-4 rounded-[8px] bg-emerald-950/64 p-4 lg:w-4/12 xl:w-3/12">
         <p>{subtext}</p>
-        <Button asChild className="bg-emerald-800 text-emerald-50 hover:bg-emerald-700">
-          <a href="#contact">{ctaText}</a>
+        <Button className="bg-emerald-800 text-emerald-50 hover:bg-emerald-700">
+          <a href="#contact" class="block h-full w-full">{ctaText}</a>
         </Button>
       </div>
     </div>
