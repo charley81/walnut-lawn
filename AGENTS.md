@@ -64,7 +64,7 @@ src/
 ├── layouts/Layout.astro       # Root HTML layout (Header + Footer)
 ├── pages/
 │   ├── index.astro            # Main page — fetches Sanity, renders pageBuilder
-│   └── admin.astro            # Embedded Sanity Studio
+
 └── styles/global.css          # Global CSS + theme tokens (@theme inline)
 ```
 
@@ -118,7 +118,7 @@ Local images in `src/images/` serve as fallbacks when Sanity images aren't avail
 
 ### Studio
 
-Embedded at `/admin`. Access locally via `pnpm dev` → http://localhost:4321/admin
+Built and served at `/studio`. In dev, run `npx sanity dev --port 3333` for a hot-reloading Studio.
 
 ### Env Vars
 
