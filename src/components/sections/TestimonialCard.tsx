@@ -12,8 +12,31 @@ interface TestimonialCardProps {
   testimonial: Testimonial
 }
 
+function getInitials(name: string): string {
+  return name
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
+}
+
+// Map testimonial names to their fallback local images
+type TestimonialMap = Record<string, string>
+const localAvatars: TestimonialMap = {
+  'Mark & Sarah Johnson': '/images/testimonials/testimonial-1.png',
+  'Brenda Miller': '/images/testimonials/testimonial-2.png',
+  'The Carter Family': '/images/testimonials/testimonial-3.png',
+  'David Chen': '/images/testimonials/testimonial-4.png',
+  'Roberto Martinez': '/images/testimonials/testimonial-5.png',
+  'Dr. Emily Watson': '/images/testimonials/testimonial-6.png',
+}
+
 export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
-  const avatarUrl = testimonial.avatar?.asset ? urlFor(testimonial.avatar).width(80).height(80).url() : null
+  const sanitUrl = testimonial.avatar?.asset ? urlFor(testimonial.avatar).width(80).height(80).url() : null
+  const fallbackUrl = localAvatars[testimonial.name] || null
+  const avatarUrl = sanitUrl || fallbackUrl
 
   return (
     <Card className="h-full w-full border-neutral-200 shadow-sm transition-shadow hover:shadow-md">
@@ -26,8 +49,8 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
               className="h-full w-full rounded-full object-cover ring-2 ring-emerald-600"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600 ring-2 ring-emerald-600">
-              {testimonial.name.charAt(0)}
+            <div className="flex h-full w-full items-center justify-center rounded-full bg-emerald-100 text-lg font-bold text-emerald-600 ring-2 ring-emerald-600">
+              {getInitials(testimonial.name)}
             </div>
           )}
         </div>
