@@ -1,0 +1,92 @@
+---
+import Logo from './Logo.astro'
+import { Mail, Phone, Facebook, Linkedin } from 'lucide-react'
+import SectionWrapper from '../section-wrapper.astro'
+
+interface NavLink {
+  name: string
+  href: string
+}
+
+interface SocialLink {
+  platform: string
+  url: string
+}
+
+interface Props {
+  contactTitle?: string
+  contactEmail?: string
+  contactPhone?: string
+  socialLinks?: SocialLink[]
+  footerLinks?: NavLink[]
+  copyrightText?: string
+}
+
+const {
+  contactTitle = 'CONTACT US',
+  contactEmail = 'gradeyjackson@walnutlawn.com',
+  contactPhone = '803-547-2111',
+  socialLinks = [],
+  footerLinks = [],
+  copyrightText = 'Designed & Developed by Christopher Harley'
+} = Astro.props
+
+// Map social platform names to icon components
+const socialIconMap: Record<string, any> = {
+  facebook: Facebook,
+  linkedin: Linkedin,
+}
+---
+
+<SectionWrapper>
+  <footer>
+    <h3 class="mb-8 font-bold">{contactTitle}</h3>
+
+    <div class="flex flex-col gap-y-16 lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex flex-col gap-y-4">
+        <p class="text-slate-500">
+          <Mail className="mr-1 inline-block text-emerald-950" />{contactEmail}
+        </p>
+        <p class="text-slate-500">
+          <Phone className="mr-1 inline-block text-emerald-950" />{contactPhone}
+        </p>
+
+        <div class="flex cursor-pointer gap-x-2 text-emerald-500">
+          {socialLinks.map((link) => {
+            const Icon = socialIconMap[link.platform?.toLowerCase()]
+            return Icon ? (
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600">
+                <Icon />
+              </a>
+            ) : null
+          })}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 lg:gap-x-16 lg:gap-y-8">
+        {footerLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded text-slate-500 transition-colors duration-200 hover:text-emerald-700 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-emerald-950 focus:outline-none"
+          >
+            <span class="text-emerald-500">|</span> {link.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </footer>
+</SectionWrapper>
+
+<!-- Bottom Footer Bar -->
+<div class="bg-emerald-950 p-8">
+  <div class="mx-auto flex max-w-[1800px] flex-col items-center justify-between space-y-8 md:flex-row md:space-y-0">
+    <div class="space-y-4 text-sm text-emerald-50">
+      <Logo />
+      <p>Beautiful, one lawn at a time</p>
+    </div>
+
+    <div class="text-emerald-50">
+      <p>{copyrightText}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+---
+import SectionWrapper from '../section-wrapper.astro'
+import SectionHeading from '../section-heading.astro'
+import { Image } from 'astro:assets'
+import { urlFor } from '../../lib/sanity'
+
+import aboutFallback from '../../images/about-1.png'
+
+interface Props {
+  data: {
+    sectionTitle?: string
+    sectionNumber?: string
+    sectionDescription?: string
+    body?: any[]
+    image?: any
+  }
+}
+
+const { data } = Astro.props
+const {
+  sectionTitle = 'About Us',
+  sectionNumber = '01',
+  sectionDescription = 'Faith, Family, & Beautiful Lawns',
+  body,
+  image: sanityImage
+} = data
+
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
+---
+
+<SectionWrapper id="about" class="flex flex-col items-center gap-y-8 lg:flex-row-reverse lg:gap-x-8">
+  <SectionHeading
+    class="lg:w-1/2"
+    title={sectionTitle}
+    number={sectionNumber}
+    description={sectionDescription}
+  />
+
+  {imageUrl ? (
+    <img src={imageUrl} alt="About Us" class="rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
+  ) : (
+    <Image src={aboutFallback} alt="About Us" class="rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
+  )}
+</SectionWrapper>

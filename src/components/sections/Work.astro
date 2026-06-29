@@ -1,0 +1,45 @@
+---
+import SectionWrapper from '../section-wrapper.astro'
+import SectionHeading from '../section-heading.astro'
+import { GallerySlider } from './GallerySlider'
+import { urlFor } from '../../lib/sanity'
+
+interface Props {
+  data: {
+    sectionTitle?: string
+    sectionNumber?: string
+    sectionDescription?: string
+    introText?: string
+    gallery?: any[]
+  }
+}
+
+const { data } = Astro.props
+const {
+  sectionTitle = 'Our Work',
+  sectionNumber = '03',
+  sectionDescription = 'Everything Your Lawn Needs to Thrive',
+  introText = "A picture is worth a thousand words.",
+  gallery = []
+} = data
+
+// Build image URLs from Sanity image references
+const imageUrls = gallery
+  .filter((img) => img?.asset)
+  .map((img) => urlFor(img).url())
+---
+
+<SectionWrapper class="gap grid gap-y-8" id="work">
+  <div class="flex">
+    <div class="lg:w-1/2"></div>
+    <SectionHeading
+      class="lg:w-1/2"
+      title={sectionTitle}
+      number={sectionNumber}
+      description={sectionDescription}
+      text={introText}
+    />
+  </div>
+
+  <GallerySlider client:only images={imageUrls} />
+</SectionWrapper>

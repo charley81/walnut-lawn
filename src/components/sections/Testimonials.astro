@@ -1,0 +1,38 @@
+---
+import SectionWrapper from '../section-wrapper.astro'
+import SectionHeading from '../section-heading.astro'
+import { TestimonialCarousel } from './TestimonialCarousel'
+
+interface Props {
+  data: {
+    sectionTitle?: string
+    sectionNumber?: string
+    sectionDescription?: string
+    introText?: string
+    testimonials?: any[]
+  }
+}
+
+const { data } = Astro.props
+const {
+  sectionTitle = 'Testimonials',
+  sectionNumber = '05',
+  sectionDescription = 'Hear From Your Walnut Creek Neighbors',
+  introText = "We're proud to be the lawn care choice for families throughout our community.",
+  testimonials = []
+} = data
+---
+
+<SectionWrapper class="grid gap-y-8" id="testimonials">
+  <div class="flex">
+    <div class="lg:w-1/2"></div>
+    <SectionHeading
+      title={sectionTitle}
+      number={sectionNumber}
+      description={sectionDescription}
+      text={introText}
+    />
+  </div>
+
+  <TestimonialCarousel client:only="react" testimonials={testimonials} />
+</SectionWrapper>

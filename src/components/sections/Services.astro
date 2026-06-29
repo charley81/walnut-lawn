@@ -1,0 +1,56 @@
+---
+import SectionWrapper from '../section-wrapper.astro'
+import SectionHeading from '../section-heading.astro'
+import { Image } from 'astro:assets'
+import { urlFor } from '../../lib/sanity'
+import ServicesAccordion from './ServicesAccordion'
+
+import servicesFallback from '../../images/services-1.png'
+
+interface Props {
+  data: {
+    sectionTitle?: string
+    sectionNumber?: string
+    sectionDescription?: string
+    introText?: string
+    image?: any
+    servicesList?: { title: string; icon: string; description: string }[]
+  }
+}
+
+const { data } = Astro.props
+const {
+  sectionTitle = 'Our Services',
+  sectionNumber = '02',
+  sectionDescription = 'Everything Your Lawn Needs to Thrive',
+  introText = "We provide complete lawn care designed for our neighborhood.",
+  image: sanityImage,
+  servicesList = []
+} = data
+
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
+---
+
+<SectionWrapper class="grid" id="services">
+  <div class="flex justify-end">
+    <SectionHeading
+      class="lg:w-1/2"
+      title={sectionTitle}
+      number={sectionNumber}
+      description={sectionDescription}
+      text={introText}
+    />
+  </div>
+
+  <div class="flex flex-col gap-y-8 lg:flex-row-reverse lg:items-center lg:gap-x-8">
+    {imageUrl ? (
+      <img src={imageUrl} alt="Services" class="mt-8 rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
+    ) : (
+      <Image src={servicesFallback} alt="Services" class="mt-8 rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
+    )}
+
+    <div class="w-full lg:w-1/2">
+      <ServicesAccordion client:load services={servicesList} />
+    </div>
+  </div>
+</SectionWrapper>

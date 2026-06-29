@@ -1,0 +1,49 @@
+---
+import SectionWrapper from '../section-wrapper.astro'
+import SectionHeading from '../section-heading.astro'
+import ContactForm from './ContactForm'
+
+interface Props {
+  data: {
+    sectionTitle?: string
+    sectionNumber?: string
+    sectionDescription?: string
+    introText?: string
+    formLabels?: {
+      sectionHeading?: string
+      firstName?: string
+      lastName?: string
+      email?: string
+      phone?: string
+      street?: string
+      city?: string
+      state?: string
+      zip?: string
+      referralSource?: string
+      submitText?: string
+    }
+  }
+}
+
+const { data } = Astro.props
+const {
+  sectionTitle = 'Contact Us',
+  sectionNumber = '06',
+  sectionDescription = 'Get Your Free Quote Today',
+  introText = "Ready for a beautiful, hassle-free lawn? Contact us for a free, no-obligation quote.",
+  formLabels = {}
+} = data
+---
+
+<SectionWrapper id="contact">
+  <div class="flex justify-center">
+    <SectionHeading
+      class="mb-16 lg:w-1/2"
+      title={sectionTitle}
+      number={sectionNumber}
+      description={sectionDescription}
+      text={introText}
+    />
+  </div>
+  <ContactForm client:load formLabels={formLabels} />
+</SectionWrapper>

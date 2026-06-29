@@ -1,0 +1,22 @@
+---
+export interface Props {
+  title: string
+  number: string
+  description: string
+  text?: string
+  class?: string
+}
+
+const { title, number, description, text, class: className } = Astro.props
+---
+
+<div class={`flex flex-col gap-y-8 ${className || ''}`}>
+  <p class="font-light">{title.toUpperCase()}</p>
+
+  <div class="flex items-center gap-x-4">
+    <h2 class="text-5xl font-black text-emerald-500">{number}</h2>
+    <p class="text-2xl font-bold">{description}</p>
+  </div>
+
+  {text && <p class="text-slate-500">{text}</p>}
+</div>

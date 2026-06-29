@@ -8,4 +8,4 @@
 - Astro - Web dev framework
 - Tailwind CSS - CSS Framework
 - Shadcn - Component library
-- Keystatic - Headless CMS
+- Sanity - Headless CMS

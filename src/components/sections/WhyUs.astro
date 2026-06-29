@@ -1,0 +1,63 @@
+---
+import SectionWrapper from '../section-wrapper.astro'
+import SectionHeading from '../section-heading.astro'
+import { Image } from 'astro:assets'
+import { urlFor } from '../../lib/sanity'
+import { Button } from '../ui/button'
+import WhyAccordion from './WhyAccordion'
+
+import faqFallback from '../../images/faq-1.png'
+
+interface Props {
+  data: {
+    sectionTitle?: string
+    sectionNumber?: string
+    sectionDescription?: string
+    introText?: string
+    image?: any
+    features?: { title: string; answer: string }[]
+  }
+}
+
+const { data } = Astro.props
+const {
+  sectionTitle = 'Why Us',
+  sectionNumber = '04',
+  sectionDescription = 'The Walnut Creek Difference: Why Your Neighbors Choose Us',
+  introText = "You have choices for lawn care, but only one is built right here in Walnut Creek.",
+  image: sanityImage,
+  features = []
+} = data
+
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
+---
+
+<SectionWrapper class="grid" id="faq">
+  <div class="flex flex-col gap-y-8">
+    <div>
+      <SectionHeading
+        class="lg:w-1/2"
+        title={sectionTitle}
+        number={sectionNumber}
+        description={sectionDescription}
+        text={introText}
+      />
+
+      <Button className="mt-8 w-1/2 bg-emerald-950 text-emerald-50">
+        <a href="#contact">Get Free Estimate</a>
+      </Button>
+    </div>
+
+    <div class="flex flex-col gap-y-8 lg:flex-row lg:items-center lg:gap-x-8">
+      {imageUrl ? (
+        <img src={imageUrl} alt="Why Us" class="mt-8 rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
+      ) : (
+        <Image src={faqFallback} alt="Why Us" class="mt-8 rounded-lg drop-shadow-2xl/20 drop-shadow-emerald-950 lg:w-1/2" />
+      )}
+
+      <div class="w-full lg:w-1/2">
+        <WhyAccordion client:visible data={features} />
+      </div>
+    </div>
+  </div>
+</SectionWrapper>

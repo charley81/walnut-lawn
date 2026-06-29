@@ -1,25 +1,59 @@
 ---
-import type { Fragment } from 'react'
+import Header from '../components/layout/Header.astro'
+import Footer from '../components/layout/Footer.astro'
 import '../styles/global.css'
 
-export interface Props {
-  title: string
+interface NavLink {
+  name: string
+  href: string
 }
 
-const { title } = Astro.props
+interface Props {
+  title: string
+  settings?: {
+    topBannerText?: string
+    phone?: string
+    email?: string
+    navLinks?: NavLink[]
+    footerInfo?: {
+      contactTitle?: string
+      contactEmail?: string
+      contactPhone?: string
+      socialLinks?: { platform: string; url: string }[]
+    }
+    footerLinks?: NavLink[]
+    copyrightText?: string
+  }
+}
+
+const { title, settings = {} } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content="Walnut Lawn - Premium lawn care in Walnut Creek" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
+    <Header
+      topBannerText={settings.topBannerText}
+      phone={settings.phone}
+      email={settings.email}
+      navLinks={settings.navLinks}
+    />
     <slot />
+    <Footer
+      contactTitle={settings.footerInfo?.contactTitle}
+      contactEmail={settings.footerInfo?.contactEmail}
+      contactPhone={settings.footerInfo?.contactPhone}
+      socialLinks={settings.footerInfo?.socialLinks}
+      footerLinks={settings.footerLinks}
+      copyrightText={settings.copyrightText}
+    />
   </body>
 </html>

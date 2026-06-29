@@ -1,0 +1,59 @@
+---
+import { LucideMoveDown } from 'lucide-react'
+import { Image } from 'astro:assets'
+import { Button } from '../ui/button'
+import { urlFor } from '../../lib/sanity'
+
+import heroFallback from '../../images/hero-1.png'
+
+interface Props {
+  data: {
+    headline?: string
+    subtext?: string
+    ctaText?: string
+    image?: any
+  }
+}
+
+const { data } = Astro.props
+const {
+  headline = 'Keeping Walnut Creek Beautiful, One Lawn at a Time',
+  subtext = "Get back your weekends while we keep your lawn looking it's best",
+  ctaText = 'Get Free Estimate',
+  image: sanityImage
+} = data
+
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
+---
+
+<div class="relative h-screen w-full">
+  {imageUrl ? (
+    <img src={imageUrl} alt="Hero Image" class="absolute inset-0 h-full w-full object-cover" />
+  ) : (
+    <Image src={heroFallback} alt="Hero Image" class="absolute inset-0 h-full w-full object-cover" />
+  )}
+
+  <div class="absolute inset-0 bg-emerald-950/24"></div>
+
+  <div class="relative z-10 mx-auto flex h-full max-w-2xl items-center justify-center text-emerald-50 lg:max-w-[2000px]">
+    <div class="mx-auto flex w-full flex-col gap-y-10 px-4 lg:flex-row lg:items-center lg:justify-between lg:gap-x-4">
+      <h1 class="text-4xl font-black text-emerald-50 sm:text-6xl lg:w-7/12 lg:text-8xl">
+        {headline}
+      </h1>
+
+      <div class="flex w-full flex-col gap-y-4 rounded-[8px] bg-emerald-950/64 p-4 lg:w-4/12 xl:w-3/12">
+        <p>{subtext}</p>
+        <Button>
+          <a href="#contact">{ctaText}</a>
+        </Button>
+      </div>
+    </div>
+  </div>
+  <a
+    href="#about"
+    class="absolute right-6 bottom-20 z-20 mx-auto flex min-h-12 min-w-12 animate-bounce cursor-pointer items-center justify-center rounded-full bg-emerald-500 p-3"
+    aria-label="scroll down to about section"
+  >
+    <LucideMoveDown />
+  </a>
+</div>
