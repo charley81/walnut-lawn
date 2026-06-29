@@ -25,7 +25,7 @@ const {
   image: sanityImage
 } = data
 
-const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
+const imageUrl = sanityImage?.asset ? urlFor(sanityImage).width(1024).url() : null
 ---
 
 <SectionWrapper id="about" class="flex flex-col items-center gap-y-8 lg:flex-row-reverse lg:gap-x-8">

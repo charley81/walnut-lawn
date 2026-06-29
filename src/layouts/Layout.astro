@@ -27,17 +27,50 @@ interface Props {
 }
 
 const { title, settings = {} } = Astro.props
+
+const siteUrl = 'https://walnutlawn.net'
+const siteDescription = 'Walnut Lawn provides premium lawn care services in Walnut Creek, SC. Family-owned, faith-based lawn maintenance, fertilization, landscaping, and more.'
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Walnut Lawn - Premium lawn care in Walnut Creek" />
+    <meta name="description" content={siteDescription} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- Canonical -->
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:site_name" content="Walnut Lawn" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={siteDescription} />
+
+    <!-- Social Share Image -->
+    <meta property="og:image" content={`${siteUrl}/favicon.svg`} />
+
+    <!-- JSON-LD Local Business Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: 'Walnut Lawn',
+      description: siteDescription,
+      url: siteUrl,
+      telephone: settings.phone || '803-547-2112',
+      email: settings.email || 'grantJackson@walnutlawn.com',
+      areaServed: 'Walnut Creek, SC',
+    })} />
   </head>
   <body>
     <!-- Top banner: normal flow, scrolls away -->
