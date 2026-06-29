@@ -1,0 +1,23 @@
+---
+import { LucideMail, LucidePhone } from 'lucide-react'
+
+interface Props {
+  topBannerText?: string
+  phone?: string
+  email?: string
+}
+
+const {
+  topBannerText = 'Are you ready for a free quote?',
+  phone = '803-547-2112',
+  email = 'grantJackson@walnutlawn.com',
+} = Astro.props
+---
+
+<div class="relative z-30 hidden justify-between bg-emerald-950 px-8 py-3 text-emerald-50 lg:flex">
+  <p>{topBannerText}<a href="#contact"> Contact us</a></p>
+  <div class="flex gap-x-8">
+    <p class="flex gap-x-2"><LucideMail /> {email}</p>
+    <p class="flex gap-x-2"><LucidePhone /> {phone}</p>
+  </div>
+</div>

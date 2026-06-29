@@ -22,7 +22,7 @@ const pageBuilder = pageData?.pageBuilder || []
       pageBuilder.map((section: any, index: number) => {
         switch (section._type) {
           case 'heroSection':
-            return <Hero data={section} />
+            return <Hero data={section} settings={siteSettings || {}} />
           case 'aboutSection':
             return <About data={section} />
           case 'servicesSection':
@@ -42,7 +42,7 @@ const pageBuilder = pageData?.pageBuilder || []
     ) : (
       // Fallback: render sections with hardcoded defaults if no Sanity content yet
       <>
-        <Hero data={{}} />
+        <Hero data={{}} settings={siteSettings || {}} />
         <About data={{}} />
         <Services data={{}} />
         <Work data={{}} />

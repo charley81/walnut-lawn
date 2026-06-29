@@ -1,5 +1,4 @@
 ---
-import Header from '../components/layout/Header.astro'
 import Footer from '../components/layout/Footer.astro'
 import '../styles/global.css'
 
@@ -11,9 +10,6 @@ interface NavLink {
 interface Props {
   title: string
   settings?: {
-    topBannerText?: string
-    phone?: string
-    email?: string
     navLinks?: NavLink[]
     footerInfo?: {
       contactTitle?: string
@@ -40,12 +36,6 @@ const { title, settings = {} } = Astro.props
     <title>{title}</title>
   </head>
   <body>
-    <Header
-      topBannerText={settings.topBannerText}
-      phone={settings.phone}
-      email={settings.email}
-      navLinks={settings.navLinks}
-    />
     <slot />
     <Footer
       contactTitle={settings.footerInfo?.contactTitle}

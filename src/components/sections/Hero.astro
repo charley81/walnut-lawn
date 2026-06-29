@@ -1,10 +1,21 @@
 ---
 import { LucideMoveDown } from 'lucide-react'
+import { LucideMail, LucidePhone } from 'lucide-react'
 import { Image } from 'astro:assets'
 import { Button } from '../ui/button'
 import { urlFor } from '../../lib/sanity'
+import Logo from '../layout/Logo.astro'
+import {
+  LucideMenu,
+  LucideCircleX,
+} from 'lucide-react'
 
 import heroFallback from '../../images/hero-1.png'
+
+interface NavLink {
+  name: string
+  href: string
+}
 
 interface Props {
   data: {
@@ -13,9 +24,15 @@ interface Props {
     ctaText?: string
     image?: any
   }
+  settings?: {
+    topBannerText?: string
+    phone?: string
+    email?: string
+    navLinks?: NavLink[]
+  }
 }
 
-const { data } = Astro.props
+const { data, settings = {} } = Astro.props
 const {
   headline = 'Keeping Walnut Creek Beautiful, One Lawn at a Time',
   subtext = "Get back your weekends while we keep your lawn looking it's best",
@@ -23,10 +40,18 @@ const {
   image: sanityImage
 } = data
 
+const {
+  topBannerText = 'Are you ready for a free quote?',
+  phone = '803-547-2112',
+  email = 'grantJackson@walnutlawn.com',
+  navLinks = []
+} = settings
+
 const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
 ---
 
 <div class="relative h-screen w-full">
+  <!-- Hero image behind everything -->
   {imageUrl ? (
     <img src={imageUrl} alt="Hero Image" class="absolute inset-0 h-full w-full object-cover" />
   ) : (
@@ -35,6 +60,46 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
 
   <div class="absolute inset-0 bg-emerald-950/24"></div>
 
+  <!-- Top header content layered over the image -->
+  <div class="relative z-30 flex flex-col">
+    <!-- Top Banner -->
+    <div class="hidden justify-between bg-emerald-950 px-8 py-3 text-emerald-50 lg:flex">
+      <p>{topBannerText}<a href="#contact"> Contact us</a></p>
+      <div class="flex gap-x-8">
+        <p class="flex gap-x-2"><LucideMail /> {email}</p>
+        <p class="flex gap-x-2"><LucidePhone /> {phone}</p>
+      </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 left-0 z-50 flex w-full justify-between bg-emerald-950/44 text-emerald-50 backdrop:blur-sm">
+      <div class="mx-auto w-full max-w-4xl px-4 py-8 lg:max-w-[2000px]">
+        <div class="flex items-center justify-between">
+          <Logo />
+
+          <div class="hidden items-center gap-8 lg:flex">
+            {navLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-emerald-50 transition-colors hover:text-emerald-500 hover:underline"
+              >
+                {link.name}
+              </a>
+            ))}
+            <Button variant="secondary">
+              <a href="#contact">{ctaText}</a>
+            </Button>
+          </div>
+
+          <button class="cursor-pointer lg:hidden" id="mobile-menu-button" aria-label="Open main navigation menu">
+            <LucideMenu className="lg:hidden" width="32" height="32" />
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content -->
   <div class="relative z-10 mx-auto flex h-full max-w-2xl items-center justify-center text-emerald-50 lg:max-w-[2000px]">
     <div class="mx-auto flex w-full flex-col gap-y-10 px-4 lg:flex-row lg:items-center lg:justify-between lg:gap-x-4">
       <h1 class="text-4xl font-black text-emerald-50 sm:text-6xl lg:w-7/12 lg:text-8xl">
@@ -49,6 +114,7 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
       </div>
     </div>
   </div>
+
   <a
     href="#about"
     class="absolute right-6 bottom-20 z-20 mx-auto flex min-h-12 min-w-12 animate-bounce cursor-pointer items-center justify-center rounded-full bg-emerald-500 p-3"
@@ -57,3 +123,69 @@ const imageUrl = sanityImage?.asset ? urlFor(sanityImage).url() : null
     <LucideMoveDown />
   </a>
 </div>
+
+<!-- Mobile overlay & menu -->
+<div id="mobile-overlay" class="pointer-events-none fixed inset-0 z-50 bg-black/50 opacity-0 transition-opacity duration-300 lg:hidden">
+</div>
+
+<div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-80 translate-x-full bg-emerald-950 shadow-xl transition-transform duration-300 ease-in-out lg:hidden">
+  <div class="flex h-full flex-col">
+    <div class="flex items-center justify-between border-b border-white/10 p-6">
+      <Logo />
+      <button id="mobile-close-button" aria-label="Close menu" class="cursor-pointer">
+        <LucideCircleX height="32" width="32" className="text-emerald-50" />
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-1 p-6">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-nav-link rounded-lg px-4 py-3 font-light text-emerald-50 transition-colors hover:bg-emerald-50/10"
+        >
+          {link.name}
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-auto border-t border-white/10 p-6">
+      <div class="mb-4 flex items-center gap-3 text-white">
+        <LucidePhone />
+        <a href={`tel:${phone}`} class="hover:text-emerald-300">{phone}</a>
+      </div>
+      <div class="mb-6 flex items-center gap-3 text-white">
+        <LucideMail />
+        <a href={`mailto:${email}`} class="hover:text-emerald-300">{email}</a>
+      </div>
+      <Button className="w-full cursor-pointer">{ctaText}</Button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button')
+  const mobileCloseButton = document.getElementById('mobile-close-button')
+  const mobileMenu = document.getElementById('mobile-menu')
+  const mobileOverlay = document.getElementById('mobile-overlay')
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
+
+  function openMenu() {
+    mobileMenu?.classList.remove('translate-x-full')
+    mobileOverlay?.classList.remove('opacity-0', 'pointer-events-none')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeMenu() {
+    mobileMenu?.classList.add('translate-x-full')
+    mobileOverlay?.classList.add('opacity-0', 'pointer-events-none')
+    document.body.style.overflow = ''
+  }
+
+  mobileMenuButton?.addEventListener('click', openMenu)
+  mobileCloseButton?.addEventListener('click', closeMenu)
+  mobileOverlay?.addEventListener('click', closeMenu)
+
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener('click', closeMenu)
+  })
+</script>

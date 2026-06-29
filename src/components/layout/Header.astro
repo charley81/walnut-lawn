@@ -14,7 +14,6 @@ interface NavLink {
 }
 
 interface Props {
-  topBannerText?: string
   phone?: string
   email?: string
   navLinks?: NavLink[]
@@ -22,7 +21,6 @@ interface Props {
 }
 
 const {
-  topBannerText = 'Are you ready for a free quote?',
   phone = '803-547-2112',
   email = 'grantJackson@walnutlawn.com',
   navLinks = [],
@@ -30,16 +28,7 @@ const {
 } = Astro.props
 ---
 
-<!-- Top Banner -->
-<div class="hidden justify-between bg-emerald-950 px-8 py-3 text-emerald-50 lg:flex">
-  <p>{topBannerText}<a href="#contact"> Contact us</a></p>
-  <div class="flex gap-x-8">
-    <p class="flex gap-x-2"><LucideMail /> {email}</p>
-    <p class="flex gap-x-2"><LucidePhone /> {phone}</p>
-  </div>
-</div>
-
-<!-- Main Navigation -->
+<!-- Sticky Main Navigation -->
 <nav class="sticky top-0 left-0 z-50 flex w-full justify-between bg-emerald-950/44 text-emerald-50 backdrop:blur-sm">
   <div class="mx-auto w-full max-w-4xl px-4 py-8 lg:max-w-[2000px]">
     <div class="flex items-center justify-between">
